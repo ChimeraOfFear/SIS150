@@ -1,0 +1,51 @@
+import unittest
+
+
+class SmartLight:
+    def __init__(self):
+        self.is_on = False
+        self.brightness = 0
+
+    def turn_on(self):
+        self.is_on = True
+
+    def turn_off(self):
+        self.is_on = False
+
+    def set_brightness(self, level):
+        self.brightness = level
+
+
+# Create a SmartLight object
+light = SmartLight()
+
+# Test the SmartLight
+light.turn_on()
+light.set_brightness(75)
+
+print("Light on:", light.is_on)
+print("Brightness:", light.brightness)
+
+
+# Unit tests
+class TestSmartLight(unittest.TestCase):
+
+    def test_turn_on(self):
+        light = SmartLight()
+        light.turn_on()
+        self.assertTrue(light.is_on)
+
+    def test_turn_off(self):
+        light = SmartLight()
+        light.turn_on()
+        light.turn_off()
+        self.assertFalse(light.is_on)
+
+    def test_brightness(self):
+        light = SmartLight()
+        light.set_brightness(75)
+        self.assertEqual(light.brightness, 75)
+
+
+if __name__ == "__main__":
+    unittest.main()
